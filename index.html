@@ -111,13 +111,28 @@
         width: 100%;
         text-align: right;
       }
+      .btn-info-container {
+        float: left;
+        margin-top: 0.5em;
+        margin-left: 0.5em;
+      }
+      .btn-info {
+        font-size: 2.7em;
+        color: blue;
+      }
     </style>
 </head>
 <body>
+<div>
+  <div style="float: left;">
+    <h1>Position Size Calculator</h1>
+  </div>
+  <div class="btn-info-container">
+    <span class="btn-info">&#9432;</span>
+  </div>
+</div>
 
-<h1>Position Size Calculator</h1>
-
-<div class="col">
+<div class="col clear">
   <form oninput="levRangeOutput.value=levRange.value">
 
     <div class="row">
