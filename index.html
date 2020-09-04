@@ -2,8 +2,314 @@
 <html>
 <head>
   <title>Position Size Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+      .col {
+        float: left;
+      }
+      .row {
+        /*float: left;*/
+        display: table;
+        clear: both;
+      }
+      .col-label {
+        vertical-align: middle;
+        width: 200px;
+        padding: 10px 0;
+      }
+      .clear {
+        clear: both;
+      }
+
+      .sliderwidget {
+        float: left;
+        width: 208px;
+        padding: : 0px 0px 0px 0px !important;
+        margin: 2px 0px -1px 0px !important;
+
+        /*background-color: #cccccc;*/
+        /*border: 1px solid #333;*/
+      }
+
+      .slidecontainer {
+        float: left;
+        width: 170px;
+        padding: 0px 0px 0px 0px !important;
+        margin:  0px 0px 0px 0px !important;
+
+        /*background-color: #cccccc;*/
+        /*border: 1px solid #333;*/
+      }
+
+      .slideoutput {
+        width: 32;
+        float: right;
+        /*padding: 7.5px 0px;*/
+        padding-top: 6px;
+        margin-left: 4px;
+        text-align: right;
+        /*background-color: #dddddd;*/
+        /*border: 1px solid #333;*/
+        position: relative;
+        right: 0px;
+      }
+
+      /* The slider itself */
+      .slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 30px;
+        /*background: #f3f3f3;*/
+        /*outline: none;*/
+        padding: 0px 0px 0px 0px !important;
+        margin: 0px 0px 0px 0px !important;
+
+        /*opacity: 0.7; */
+        /*-webkit-transition: .2s;*/
+        /*transition: opacity .2s;*/
+      }
+
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 35px;
+        height: 25px;
+        cursor: pointer;
+        padding: 0px 0px 0px 0px !important;
+        margin: 0px 0px 0px 0px !important;
+        border-radius: 10px;
+      }
+      .slider::-moz-range-thumb {
+        width: 35px;
+        height: 25px;
+        cursor: pointer;
+        padding: 0px 0px 0px 0px !important;
+        margin: 0px 0px 0px 0px !important;
+        border-radius: 10px;
+      }
+
+      input[type=range]::-webkit-slider-runnable-track {
+        border: 0.2px solid #aaaaaa;
+        border-radius: 3px;
+        width: 100%;
+        height: 8.4px;
+      }
+      input[type=range]::-moz-range-track {
+        border: 0.2px solid #aaaaaa;
+        border-radius: 3px;
+        width: 100%;
+        height: 8.4px;
+      }
+      output {
+        width: 100%;
+        text-align: right;
+      }
+    </style>
 </head>
 <body>
+
 <h1>Position Size Calculator</h1>
+
+<div class="col">
+  <form oninput="levRangeOutput.value=levRange.value">
+
+    <div class="row">
+      <div class="col col-label">
+        <label class="text-nowrap">Entry Price</label>
+      </div>
+      <div class="col">
+        <input type="number" id="price" id="entry" oninput="calcPosSize()" step=0.00000001 autofocus/>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-label">
+        <label class="text-nowrap">Max Loss</label>
+      </div>
+      <div class="col">
+        <input type="number" id="loss" name="loss" oninput="calcPosSize()" value=1 step=0.01 min=0.01/>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-label">
+        <label class="text-nowrap">Stop</label>
+      </div>
+      <div class="col">
+        <input type="number" id="stop" name="stop" oninput="calcPosSize()" step=0.00000001 min=0/>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-label">
+        <label class="text-nowrap">Position Size</label>
+      </div>
+      <div class="col">
+        <input type="text" readonly id="posSize" name="posSize" value="0" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-label">
+        <label class="text-nowrap">Leverage Range</label>
+      </div>
+      <div class="col sliderwidget">
+
+        <div class="slidecontainer">
+
+          <input type="range" class="slider" id="levRange" name="levRange" value="1" min="1" max="10"
+              oninput="
+              // document.getElementById('leverage').value = this.value;
+              margin.value = (parseFloat(posSize.value)/this.value).toPrecision(5);" />
+        </div>
+        <div class="slideoutput">
+          <output name="levRangeOutput" class="col">1</output>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-label">
+        <label class="text-nowrap" for="margin">Margin</label>
+      </div>
+      <div class="col">
+        <input type="text" readonly id="margin" name="margin" value="1" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-label">
+        <label class="text-nowrap">R/R 1:2.2 Target</label>
+      </div>
+      <div class="col">
+        <input type="text" readonly id="rr_target" value="0" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-label">
+        <label class="text-nowrap">Distance to Stop</label>
+      </div>
+      <div class="col">
+        <input type="text" readonly id="disStop" value="0" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-label">
+        <label class="text-nowrap">Distance % to Stop</label>
+      </div>
+      <div class="col">
+        <input type="text" readonly id="disStopPerc" value="0" />
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+ <script type='text/javascript'>
+function getInputValue(id)
+{
+    var input1 = document.getElementById(id)
+    //Assume form with id="theform"
+    var number = 0;
+    //If the textbox is not blank
+    if(input1.value != "")
+    {
+        number = parseFloat(input1.value);
+    }
+    return number;
+}
+
+function liquidationPrice(price, leverage, long) {
+  var mmr = 0.5;
+  var levmmr = leverage * mmr / 100
+  var levprice = leverage * price
+  var liqP;
+
+  if (long) {
+    liqP  = levprice/(leverage+1-(levmmr));
+  } else {
+    liqP = levprice/(leverage-1+(levmmr));
+  }
+
+  return liqP;
+}
+
+function calcPosSize()
+{
+  // Input
+  var price = getInputValue('price');
+  var loss = getInputValue('loss');
+  var stop = getInputValue('stop');
+
+  // distance and distance % to stop loss
+  var disStop = price - stop;
+
+  var rr_ratio = 2.2;
+  var rr_target = price + (rr_ratio * disStop);
+
+  var long = true;
+  if(disStop < 0) {
+    disStop = -disStop;
+    long = false;
+  }
+
+  // position size
+  var disStopPerc = disStop / price * 100;
+  var posSize = loss / (disStopPerc / 100);
+
+  // max leverage
+  var maxLev = 0;
+  var leverage = 100;
+  while (leverage > 0) {
+    var liqP = liquidationPrice(price, leverage, long);
+    if (long && liqP < stop) {
+      maxLev = leverage;
+      console.log('Liquidation price: ' + liqP);
+      break;
+    }
+    if (!long && liqP > stop) {
+      maxLev = leverage;
+      console.log('Liquidation price: ' + liqP);
+      break;
+    }
+
+    leverage -= 1;
+  }
+
+  // Display the result
+  document.getElementById('posSize').value     = posSize.toFixed(2);
+  document.getElementById('rr_target').value   = rr_target.toFixed(3);
+  document.getElementById('disStop').value     = disStop.toFixed(2);
+  document.getElementById('disStopPerc').value = disStopPerc.toFixed(2);
+  levRange.max = maxLev;
+  // maxLevLabel.innerHTML = maxLev;
+  console.log('maxLev', maxLev);
+  console.log('levRange.max', levRange.max);
+  // console.log('maxLevLabel.innerHTML', maxLevLabel.innerHTML);
+
+  console.log('levRange.value > maxLev', levRange.value, maxLev);
+  console.log('levRange.value > maxLev', levRange.value > maxLev);
+
+  if (levRange.value > maxLev) {
+    levRange.value = maxLev;
+  }
+
+  // document.getElementById('leverage').value = levRange.value;
+  // console.log(document.getElementById('leverage').value);
+}
+
+function precise(x) {
+  return Number.parseFloat(x).toPrecision(4);
+}
+</script>
+
 </body>
 </html>
