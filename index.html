@@ -2,160 +2,173 @@
 <html>
 <head>
   <title>Position Size Calculator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <style type="text/css">
-      * {
-        box-sizing: border-box;
-      }
-      h1 {
-        font-size: 26px;
-      }
-      .col {
-        float: left;
-      }
-      .row {
-        /*float: left;*/
-        display: table;
-        clear: both;
-      }
-      .col-label {
-        vertical-align: middle;
-        width: 200px;
-        padding: 10px 0;
-      }
-      .clear {
-        clear: both;
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      .sliderwidget {
-        float: left;
-        width: 208px;
-        padding: : 0px 0px 0px 0px !important;
-        margin: 2px 0px -1px 0px !important;
-      }
+  <!-- Layout -->
+  <style type="text/css">
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin-top: 0px;
+    }
+    h1 {
+      font-size: 26px;
+      margin-top: 10px;
+    }
+    .col {
+      float: left;
+    }
+    .row {
+      /*float: left;*/
+      display: table;
+      clear: both;
+    }
+    .col-label {
+      vertical-align: middle;
+      width: 200px;
+      padding: 10px 0;
+    }
+    .clear {
+      clear: both;
+    }
+  </style>
+  <!-- Slider -->
+  <style type="text/css">
+    .sliderwidget {
+      float: left;
+      width: 208px;
+      padding: : 0px 0px 0px 0px !important;
+      margin: 2px 0px -1px 0px !important;
+    }
 
-      .slidecontainer {
-        float: left;
-        width: 170px;
-        padding: 0px 0px 0px 0px !important;
-        margin:  0px 0px 0px 0px !important;
-      }
+    .slidecontainer {
+      float: left;
+      width: 170px;
+      padding: 0px 0px 0px 0px !important;
+      margin:  0px 0px 0px 0px !important;
+    }
 
-      .slideoutput {
-        width: 32;
-        float: right;
-        padding-top: 6px;
-        margin-left: 4px;
-        text-align: right;
-        position: relative;
-        right: 0px;
-      }
+    .slideoutput {
+      width: 32;
+      float: right;
+      padding-top: 6px;
+      margin-left: 4px;
+      text-align: right;
+      position: relative;
+      right: 0px;
+    }
 
-      .slider {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 100%;
-        height: 30px;
-        padding: 0px 0px 0px 0px !important;
-        margin: 0px 0px 0px 0px !important;
-      }
+    .slider {
+      /*-webkit-appearance: none;*/
+      /*appearance: none;*/
+      width: 100%;
+      height: 30px;
+      /*padding: 0px 0px 0px 0px !important;*/
+      /*margin: 0px 0px 0px 0px !important;*/
+    }
 
-      .slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 35px;
-        height: 25px;
-        cursor: pointer;
-        padding: 0px 0px 0px 0px !important;
-        margin: 0px 0px 0px 0px !important;
-        border-radius: 10px;
-      }
-      .slider::-moz-range-thumb {
-        width: 35px;
-        height: 25px;
-        cursor: pointer;
-        padding: 0px 0px 0px 0px !important;
-        margin: 0px 0px 0px 0px !important;
-        border-radius: 10px;
-      }
+/*    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 35px;
+      height: 25px;
+      cursor: pointer;
+      padding: 0px 0px 0px 0px !important;
+      margin: 0px 0px 0px 0px !important;
+      border-radius: 10px;
+    }
+    .slider::-moz-range-thumb {
+      width: 35px;
+      height: 25px;
+      cursor: pointer;
+      padding: 0px 0px 0px 0px !important;
+      margin: 0px 0px 0px 0px !important;
+      border-radius: 10px;
+    }
 
-      input[type=range]::-webkit-slider-runnable-track {
-        border: 0.2px solid #aaaaaa;
-        border-radius: 3px;
-        width: 100%;
-        height: 8.4px;
-      }
-      input[type=range]::-moz-range-track {
-        border: 0.2px solid #aaaaaa;
-        border-radius: 3px;
-        width: 100%;
-        height: 8.4px;
-      }
-      output {
-        width: 100%;
-        text-align: right;
-      }
-      .btn-info-container {
-        float: left;
-        margin-top: 10px;
-        margin-left: 10px;
-      }
-      .info-btn {
-        font-size: 140%;
-        font-style: bold;
-        color: blue;
-        margin: : 0px 0px 0px 0px !important;
-        padding: : 0px 0px 0px 0px !important;
-        background-color: #fff;
-        cursor: pointer;
+    input[type=range]::-webkit-slider-runnable-track {
+      border: 0.2px solid #aaaaaa;
+      border-radius: 3px;
+      width: 100%;
+      height: 8.4px;
+    }
+    input[type=range]::-moz-range-track {
+      border: 0.2px solid #aaaaaa;
+      border-radius: 3px;
+      width: 100%;
+      height: 8.4px;
+    }
+*/
+    output {
+      width: 100%;
+      text-align: right;
+    }
+  </style>
+  <!-- Info button -->
+  <style type="text/css">
+    .btn-info-container {
+      float: left;
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+    .info-btn {
+      font-size: 140%;
+      font-style: bold;
+      color: blue;
+      /*margin: : 0px 0px 0px 0px !important;*/
+      /*padding: : 0px 0px 0px 0px !important;*/
+      background-color: #fff;
+      cursor: pointer;
 
-        /*border: none;*/
-        border: 0.2px solid black;
-        border-radius: 10px;
+      /*border: none;*/
+      border: 2px solid #00f;
+      border-radius: 8px;
 
-      }
-      .info-btn:hover {
-        color: #66f;
-      }
+    }
+    .info-btn:hover {
+      color: #66f;
+      border: 1px solid 00f;
+    }
+  </style>
+  <!-- Modal -->
+  <style type="text/css">
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
 
-    </style>
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%; /* Could be more or less, depending on screen size */
+    }
 
-    <style type="text/css">
-      .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-      }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-      .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto; /* 15% from the top and centered */
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
-      }
-
-      .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
-
-      .close:hover,
-      .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }
-    </style>
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 
 <body>
@@ -165,7 +178,8 @@
     <h1>Position Size Calculator</h1>
   </div>
   <div class="btn-info-container">
-    <button id="infoBtn" class="info-btn">i</button>
+    <!-- <button id="infoBtn" class="info-btn">&#x1F6C8;&#9432;&#8505;</button> -->
+    <button id="infoBtn" class="info-btn">&#8505;</button>
   </div>
 </div>
 
