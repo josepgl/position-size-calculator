@@ -15,7 +15,7 @@
     }
     h1 {
       font-size: 26px;
-      margin-top: 10px;
+      margin-top: 18px;
     }
     .col {
       float: left;
@@ -41,38 +41,71 @@
   <style type="text/css">
     .sliderwidget {
       float: left;
+      /*width: 100%;*/
       width: 208px;
+      /*height: 48px;*/
       padding: : 0px 0px 0px 0px !important;
-      margin: 2px 0px -1px 0px !important;
-    }
+      margin: 0px 0px 0px 0px !important;
+      /*border: 1px solid black;*/
+      height: 21px;
 
+    }
+/*
     .slidecontainer {
       float: left;
-      width: 170px;
+      width: 150px;
       padding: 0px 0px 0px 0px !important;
       margin:  0px 0px 0px 0px !important;
+      border: 1px solid black;
     }
-
-    .slideoutput {
-      width: 32;
-      float: right;
-      padding-top: 6px;
-      margin-left: 4px;
-      text-align: right;
+*/
+    .slidecontainer {
       position: relative;
-      right: 0px;
+      float: right;
+      /*left: 38px;*/
+      /*bottom: 26px;*/
+      /*width: 166px;*/
+      left: -0.6rem;
+      bottom: 1.5rem;
+      width: 9.5rem;
+      /*width: 90%;*/
     }
 
     .slider {
       /*-webkit-appearance: none;*/
       /*appearance: none;*/
-      width: 100%;
-      height: 30px;
+      /*width: 100px;*/
+      /*height: 30px;*/
       /*padding: 0px 0px 0px 0px !important;*/
       /*margin: 0px 0px 0px 0px !important;*/
     }
 
-/*    .slider::-webkit-slider-thumb {
+    .slideoutput {
+      /*width: 32;*/
+      float: left;
+      /*padding-top: 6px;*/
+      /*margin-left: 4px;*/
+      /*margin-right: 4px;*/
+      /*text-align: right;*/
+      /*position: relative;*/
+      /*right: 0px;*/
+    }
+
+    .output {
+      /*float: left;*/
+      /*border: none;*/
+      /*background-color: #eee;*/
+    }
+
+    input[type=range] {
+      /*border: 0.2px solid #aaaaaa;*/
+      /*border-radius: 3px;*/
+      width: 100%;
+      height: 8.4px;
+    }
+
+/*
+      .slider::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
       width: 35px;
@@ -82,6 +115,7 @@
       margin: 0px 0px 0px 0px !important;
       border-radius: 10px;
     }
+
     .slider::-moz-range-thumb {
       width: 35px;
       height: 25px;
@@ -90,7 +124,9 @@
       margin: 0px 0px 0px 0px !important;
       border-radius: 10px;
     }
+*/
 
+/*
     input[type=range]::-webkit-slider-runnable-track {
       border: 0.2px solid #aaaaaa;
       border-radius: 3px;
@@ -109,15 +145,16 @@
       text-align: right;
     }
   </style>
+
   <!-- Info button -->
   <style type="text/css">
     .btn-info-container {
       float: left;
       margin-top: 10px;
-      margin-left: 20px;
+      margin-left: 14px;
     }
     .info-btn {
-      font-size: 140%;
+      font-size: 180%;
       font-style: bold;
       color: blue;
       /*margin: : 0px 0px 0px 0px !important;*/
@@ -127,7 +164,8 @@
 
       /*border: none;*/
       border: 2px solid #00f;
-      border-radius: 8px;
+      border-radius: 10px;
+      width: 44px;
 
     }
     .info-btn:hover {
@@ -230,16 +268,26 @@
         <label class="text-nowrap">Leverage Range</label>
       </div>
       <div class="col sliderwidget">
-
+<!-- 
         <div class="slidecontainer">
-
           <input type="range" class="slider" id="levRange" name="levRange" value="1" min="1" max="10"
               oninput="
               // document.getElementById('leverage').value = this.value;
               margin.value = (parseFloat(posSize.value)/this.value).toPrecision(5);" />
         </div>
+ -->
         <div class="slideoutput">
-          <output name="levRangeOutput" class="col">1</output>
+          <input type="text" readonly name="levRangeOutput" id="levRangeOutput" class="col output" value="1" >
+
+            <div class="slidecontainer">
+              <input type="range" class="slider" id="levRange" name="levRange" value="1" min="1" max="10"
+                  oninput="
+                  // document.getElementById('leverage').value = this.value;
+                  margin.value = (parseFloat(posSize.value)/this.value).toPrecision(5);" />
+            </div>
+
+          </input>
+          <!-- <output name="levRangeOutput" class="col">1</output> -->
         </div>
 
       </div>
