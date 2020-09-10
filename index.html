@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Position Size Calculator</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- Layout -->
-  <style type="text/css">
+  <style>
     * {
       box-sizing: border-box;
     }
@@ -38,7 +38,7 @@
     }
   </style>
   <!-- Slider -->
-  <style type="text/css">
+  <style>
     .sliderwidget {
       float: left;
       /*width: 100%;*/
@@ -147,7 +147,7 @@
   </style>
 
   <!-- Info button -->
-  <style type="text/css">
+  <style>
     .btn-info-container {
       float: left;
       margin-top: 10px;
@@ -155,7 +155,6 @@
     }
     .info-btn {
       font-size: 180%;
-      font-style: bold;
       color: blue;
       /*margin: : 0px 0px 0px 0px !important;*/
       /*padding: : 0px 0px 0px 0px !important;*/
@@ -170,11 +169,11 @@
     }
     .info-btn:hover {
       color: #66f;
-      border: 1px solid 00f;
+      border: 1px solid #00f;
     }
   </style>
   <!-- Modal -->
-  <style type="text/css">
+  <style>
     .modal {
       display: none; /* Hidden by default */
       position: fixed; /* Stay in place */
@@ -232,7 +231,7 @@
         <label class="text-nowrap">Entry Price</label>
       </div>
       <div class="col">
-        <input type="number" id="price" id="entry" oninput="calcPosSize()" step=0.00000001 autofocus/>
+        <input type="number" id="price" oninput="calcPosSize()" step=0.00000001 autofocus />
       </div>
     </div>
 
@@ -241,7 +240,7 @@
         <label class="text-nowrap">Max Loss</label>
       </div>
       <div class="col">
-        <input type="number" id="loss" name="loss" oninput="calcPosSize()" value=1 step=0.01 min=0.01/>
+        <input type="number" id="loss" name="loss" oninput="calcPosSize()" value=1 step=0.01 min=0.01 />
       </div>
     </div>
 
@@ -250,7 +249,7 @@
         <label class="text-nowrap">Stop</label>
       </div>
       <div class="col">
-        <input type="number" id="stop" name="stop" oninput="calcPosSize()" step=0.00000001 min=0/>
+        <input type="number" id="stop" name="stop" oninput="calcPosSize()" step=0.00000001 min=0 />
       </div>
     </div>
 
@@ -361,7 +360,7 @@
 
 </div>
 
-<script type="text/javascript">
+<script>
 var modal = document.getElementById("infoModal");
 var btn = document.getElementById("infoBtn");
 
@@ -388,7 +387,7 @@ window.onclick = function(event) {
 
 
 
-<script type='text/javascript'>
+<script>
 function getInputValue(id)
 {
     var input1 = document.getElementById(id)
