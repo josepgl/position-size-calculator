@@ -240,7 +240,7 @@
         <label class="text-nowrap">Max Loss</label>
       </div>
       <div class="col">
-        <input type="number" id="loss" name="loss" oninput="calcPosSize()" value=1 step=0.01 min=0.01 />
+        <input type="number" id="loss" name="loss" oninput="calcPosSize()" value=1 step=0.01 min=0.01>
       </div>
     </div>
 
@@ -249,7 +249,7 @@
         <label class="text-nowrap">Stop</label>
       </div>
       <div class="col">
-        <input type="number" id="stop" name="stop" oninput="calcPosSize()" step=0.00000001 min=0 />
+        <input type="number" id="stop" name="stop" oninput="calcPosSize()" step=0.00000001 min=0>
       </div>
     </div>
 
@@ -258,7 +258,7 @@
         <label class="text-nowrap">Position Size</label>
       </div>
       <div class="col">
-        <input type="text" readonly id="posSize" name="posSize" value="0" />
+        <input type="text" readonly id="posSize" name="posSize" value="0">
       </div>
     </div>
 
@@ -285,7 +285,7 @@
                   margin.value = (parseFloat(posSize.value)/this.value).toPrecision(5);" />
             </div>
 
-          </input>
+          <!-- </input> -->
           <!-- <output name="levRangeOutput" class="col">1</output> -->
         </div>
 
