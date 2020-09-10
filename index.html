@@ -5,23 +5,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+  <!-- Reset -->
+  <style>
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, font, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      font-weight: inherit;
+      font-style: inherit;
+      font-size: 100%;
+      font-family: inherit;
+      vertical-align: baseline;
+    }
+    /* remember to define focus styles! */
+    :focus {
+      outline: 0;
+    }
+    body {
+      line-height: 1;
+      color: black;
+      background: white;
+    }
+    ol, ul {
+      list-style: none;
+    }
+    /* tables still need 'cellspacing="0"' in the markup */
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+    caption, th, td {
+      text-align: left;
+      font-weight: normal;
+    }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+      content: "";
+    }
+    blockquote, q {
+      quotes: "" "";
+    }
+  </style>
+
   <!-- Layout -->
   <style>
     * {
       box-sizing: border-box;
-    }
-    body {
-      margin-top: 0px;
+      font-family: sans-serif;
     }
     h1 {
       font-size: 26px;
-      margin-top: 18px;
+      margin-top: 0.5em;
+      margin-bottom: 0.4em;
     }
+
+    input {
+      width: 200px;
+      height: 34px;
+      line-height: 34px;
+      box-sizing: border-box;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      padding: 0px 8px;
+    }
+
+    input:disabled, input:read-only {
+      background: #f8f8f8;
+    }
+
+
     .col {
       float: left;
     }
     .row {
-      /*float: left;*/
       display: table;
       clear: both;
     }
@@ -37,112 +101,52 @@
       font-size: 60%;
     }
   </style>
+
   <!-- Slider -->
   <style>
     .sliderwidget {
       float: left;
-      /*width: 100%;*/
-      width: 208px;
-      /*height: 48px;*/
-      padding: 0px 0px 0px 0px !important;
-      margin: 0px 0px 0px 0px !important;
-      /*border: 1px solid black;*/
+      width: 200px;
       height: 21px;
-
     }
-/*
-    .slidecontainer {
-      float: left;
-      width: 150px;
-      padding: 0px 0px 0px 0px !important;
-      margin:  0px 0px 0px 0px !important;
-      border: 1px solid black;
-    }
-*/
     .slidecontainer {
       position: relative;
       float: right;
-      /*left: 38px;*/
-      /*bottom: 26px;*/
-      /*width: 166px;*/
-      left: -0.6rem;
-      bottom: 1.5rem;
-      width: 9.5rem;
-      /*width: 90%;*/
-    }
-
-    .slider {
-      /*-webkit-appearance: none;*/
-      /*appearance: none;*/
-      /*width: 100px;*/
-      /*height: 30px;*/
-      /*padding: 0px 0px 0px 0px !important;*/
-      /*margin: 0px 0px 0px 0px !important;*/
+      left: -0.5em;
+      bottom: 1.58em;
+      width: 9.5em;
     }
 
     .slideoutput {
-      /*width: 32;*/
       float: left;
-      /*padding-top: 6px;*/
-      /*margin-left: 4px;*/
-      /*margin-right: 4px;*/
-      /*text-align: right;*/
-      /*position: relative;*/
-      /*right: 0px;*/
-    }
-
-    .output {
-      /*float: left;*/
-      /*border: none;*/
-      /*background-color: #eee;*/
     }
 
     input[type=range] {
-      /*border: 0.2px solid #aaaaaa;*/
-      /*border-radius: 3px;*/
+      -webkit-appearance: none;
       width: 100%;
-      height: 8.4px;
+      height: 8px;
     }
 
-/*
-      .slider::-webkit-slider-thumb {
+    .slider::-webkit-slider-thumb {
       -webkit-appearance: none;
       appearance: none;
-      width: 35px;
-      height: 25px;
-      cursor: pointer;
-      padding: 0px 0px 0px 0px !important;
-      margin: 0px 0px 0px 0px !important;
-      border-radius: 10px;
+      border: 0.1em solid #bbb;
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 1.5em;
+      background: #f8f8f8;
     }
 
     .slider::-moz-range-thumb {
-      width: 35px;
-      height: 25px;
-      cursor: pointer;
-      padding: 0px 0px 0px 0px !important;
-      margin: 0px 0px 0px 0px !important;
-      border-radius: 10px;
+      border: 0.1em solid #bbb;
+      width: 1.35em;
+      height: 1.35em;
+      border-radius: 1.35em;
+      background: #f8f8f8;
     }
-*/
 
-/*
-    input[type=range]::-webkit-slider-runnable-track {
-      border: 0.2px solid #aaaaaa;
-      border-radius: 3px;
-      width: 100%;
-      height: 8.4px;
-    }
     input[type=range]::-moz-range-track {
-      border: 0.2px solid #aaaaaa;
-      border-radius: 3px;
-      width: 100%;
-      height: 8.4px;
-    }
-*/
-    output {
-      width: 100%;
-      text-align: right;
+      background: white;
     }
   </style>
 
@@ -150,19 +154,15 @@
   <style>
     .btn-info-container {
       float: left;
-      margin-top: 10px;
-      margin-left: 14px;
+      margin-top: 0.4em;
+      margin-left: 1em;
     }
     .info-btn {
       font-size: 180%;
       color: blue;
-      /*margin: : 0px 0px 0px 0px !important;*/
-      /*padding: : 0px 0px 0px 0px !important;*/
       background-color: #fff;
       cursor: pointer;
-
-      /*border: none;*/
-      border: 2px solid #00f;
+      border: 1px solid #00f;
       border-radius: 10px;
       width: 44px;
 
@@ -172,27 +172,28 @@
       border: 1px solid #00f;
     }
   </style>
+
   <!-- Modal -->
   <style>
     .modal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 1; /* Sit on top */
+      display: none;
+      position: fixed;
+      z-index: 1;
       left: 0;
       top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
     }
 
     .modal-content {
       background-color: #fefefe;
-      margin: 15% auto; /* 15% from the top and centered */
+      margin: 15% auto;
       padding: 20px;
       border: 1px solid #888;
-      width: 80%; /* Could be more or less, depending on screen size */
+      width: 80%;
     }
 
     .close {
@@ -218,7 +219,6 @@
     <h1>Position Size Calculator</h1>
   </div>
   <div class="btn-info-container">
-    <!-- <button id="infoBtn" class="info-btn">&#x1F6C8;&#9432;&#8505;</button> -->
     <button id="infoBtn" class="info-btn">&#8505;</button>
   </div>
 </div>
@@ -231,7 +231,7 @@
         <label class="text-nowrap">Entry Price</label>
       </div>
       <div class="col">
-        <input type="number" id="price" oninput="calcPosSize()" step=0.00000001 autofocus />
+        <input type="number" id="price" oninput="calcPosSize()" step=0.00000001 autofocus>
       </div>
     </div>
 
@@ -266,30 +266,20 @@
       <div class="col col-label">
         <label class="text-nowrap">Leverage Range</label>
       </div>
+
       <div class="col sliderwidget">
-<!-- 
-        <div class="slidecontainer">
-          <input type="range" class="slider" id="levRange" name="levRange" value="1" min="1" max="10"
-              oninput="
-              // document.getElementById('leverage').value = this.value;
-              margin.value = (parseFloat(posSize.value)/this.value).toPrecision(5);" />
-        </div>
- -->
         <div class="slideoutput">
-          <input type="text" readonly name="levRangeOutput" id="levRangeOutput" class="col output" value="1" >
+          <input type="text" readonly name="levRangeOutput" id="levRangeOutput" class="col" value="1">
 
             <div class="slidecontainer">
               <input type="range" class="slider" id="levRange" name="levRange" value="1" min="1" max="10"
                   oninput="
                   // document.getElementById('leverage').value = this.value;
-                  margin.value = (parseFloat(posSize.value)/this.value).toPrecision(5);" />
+                  margin.value = (parseFloat(posSize.value)/this.value).toPrecision(5);">
             </div>
-
-          <!-- </input> -->
-          <!-- <output name="levRangeOutput" class="col">1</output> -->
         </div>
-
       </div>
+
     </div>
 
     <div class="row">
@@ -297,7 +287,7 @@
         <label class="text-nowrap" for="margin">Margin</label>
       </div>
       <div class="col">
-        <input type="text" readonly id="margin" name="margin" value="1" />
+        <input type="text" readonly id="margin" name="margin" value="1">
       </div>
     </div>
 
@@ -306,7 +296,7 @@
         <label class="text-nowrap">R/R 1:2.2 Target</label>
       </div>
       <div class="col">
-        <input type="text" readonly id="rr_target" value="0" />
+        <input type="text" readonly id="rr_target" value="0">
       </div>
     </div>
 
@@ -315,7 +305,7 @@
         <label class="text-nowrap">Distance to Stop</label>
       </div>
       <div class="col">
-        <input type="text" readonly id="disStop" value="0" />
+        <input type="text" readonly id="disStop" value="0">
       </div>
     </div>
 
