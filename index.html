@@ -89,9 +89,14 @@
       margin-bottom: 1em;
     }
 
-    p, hr {
+    p {
       margin-bottom: 1.3em;
       line-height: 1.3em;
+    }
+
+    hr {
+      margin-bottom: 0.6em;
+      color: #fff;
     }
 
 
@@ -230,6 +235,7 @@
 
 <body>
 
+<!-- Header -->
 <div>
   <div style="float: left;">
     <h1>Position Size Calculator</h1>
@@ -239,6 +245,7 @@
   </div>
 </div>
 
+<!-- Main -->
 <div class="col clear">
   <form oninput="levRangeOutput.value=levRange.value">
 
@@ -253,19 +260,19 @@
 
     <div class="row">
       <div class="col col-label">
-        <label class="text-nowrap">Max Loss</label>
+        <label class="text-nowrap">Stop Loss</label>
       </div>
       <div class="col">
-        <input type="number" id="loss" name="loss" oninput="calcPosSize()" value=1 step=0.01 min=0.01>
+        <input type="number" id="stop" name="stop" oninput="calcPosSize()" step=0.00000001 min=0>
       </div>
     </div>
 
     <div class="row">
       <div class="col col-label">
-        <label class="text-nowrap">Stop</label>
+        <label class="text-nowrap">Capital at risk</label>
       </div>
       <div class="col">
-        <input type="number" id="stop" name="stop" oninput="calcPosSize()" step=0.00000001 min=0>
+        <input type="number" id="loss" name="loss" oninput="calcPosSize()" step=0.01 min=0.01>
       </div>
     </div>
 
@@ -278,9 +285,40 @@
       </div>
     </div>
 
+    <hr>
+
     <div class="row">
       <div class="col col-label">
-        <label class="text-nowrap">Leverage Range</label>
+        <label class="text-nowrap">Distance to Stop</label>
+      </div>
+      <div class="col">
+        <input type="text" readonly id="disStop" value="0">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-label">
+        <label class="text-nowrap">Distance % to Stop</label>
+      </div>
+      <div class="col">
+        <input type="text" readonly id="disStopPerc" value="0" />
+      </div>
+    </div>
+
+    <div class="row" style="display: none">
+      <div class="col col-label">
+        <label class="text-nowrap">R/R 1:2.2 Target</label>
+      </div>
+      <div class="col">
+        <input type="text" readonly id="rr_target" value="0">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+      <div class="col col-label">
+        <label class="text-nowrap">Leverage</label>
       </div>
 
       <div class="col sliderwidget">
@@ -304,33 +342,6 @@
       </div>
       <div class="col">
         <input type="text" readonly id="margin" name="margin" value="1">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col col-label">
-        <label class="text-nowrap">R/R 1:2.2 Target</label>
-      </div>
-      <div class="col">
-        <input type="text" readonly id="rr_target" value="0">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col col-label">
-        <label class="text-nowrap">Distance to Stop</label>
-      </div>
-      <div class="col">
-        <input type="text" readonly id="disStop" value="0">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col col-label">
-        <label class="text-nowrap">Distance % to Stop</label>
-      </div>
-      <div class="col">
-        <input type="text" readonly id="disStopPerc" value="0" />
       </div>
     </div>
 
